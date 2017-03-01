@@ -1,0 +1,6 @@
+D:\dev\bank-objects\bank-objects\bank-objects\bin\Debug\bank-objects.exe.config
+D:\dev\bank-objects\bank-objects\bank-objects\bin\Debug\bank-objects.exe
+D:\dev\bank-objects\bank-objects\bank-objects\bin\Debug\bank-objects.pdb
+D:\dev\bank-objects\bank-objects\bank-objects\obj\Debug\bank-objects.csprojResolveAssemblyReference.cache
+D:\dev\bank-objects\bank-objects\bank-objects\obj\Debug\bank-objects.exe
+D:\dev\bank-objects\bank-objects\bank-objects\obj\Debug\bank-objects.pdb
