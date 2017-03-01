@@ -10,15 +10,13 @@ namespace bank_objects
     {
         private decimal _balance = 0;
         private string _entries;
-        //private decimal _sum;
-        //private DateTime _timestamp;
         public string AccNumb { get; set; }
         public List<Entry> entry = new List<Entry>();
 
-
-        public Account()
+        //call for the bank to create an account number for the given customer
+        public Account(Customer c, Bank b)
         {
-            
+            c.AccNumb = b.CreateAN(this);
         }
 
         public decimal Balance
@@ -26,11 +24,15 @@ namespace bank_objects
             get { return _balance; }
             set { _balance = value; }
         }
+
+        //Get balance from this account
         public decimal GetBalance()
         {
             _balance = this.Balance;
             return _balance;
         }
+
+        //Get all entries from this account
         public string GetAllEntries()
         {
             _entries = "Account: " + this.AccNumb.ToString() + "\n";
@@ -41,6 +43,8 @@ namespace bank_objects
             return _entries;
 
         }
+
+        //Get entries limited with timestapms from this account
         public string GetEntries(DateTime s, DateTime e)
         {
             _entries = "Account: " + this.AccNumb.ToString() + "\n";
@@ -53,9 +57,10 @@ namespace bank_objects
             return _entries;
 
         }
+        //Add an Entry to this account
         public void AddEntry(decimal sum, DateTime ts)
         {
-            var entry = new Entry(sum, ts, this);
+            var entry = new Entry(this, sum, ts);
         }
     }
 }

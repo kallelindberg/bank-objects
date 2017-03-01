@@ -28,6 +28,8 @@ namespace bank_objects
             get { return _name; }
             set { _name = value; }
         }
+
+        //create an account number for an account
         public string CreateAN(Account a)
         {
             for (int c = 0; c < 13; c++)
@@ -39,6 +41,8 @@ namespace bank_objects
             accounts.Add(a);
             return _accnumb;
         }
+
+        //query all transactions from an Account
         public string GetAllEntries(Account a)
         {
             _entries = "Account: " + a.AccNumb.ToString() + "\n";
@@ -50,6 +54,8 @@ namespace bank_objects
             return _entries;
            
         }
+
+        //query transactions from an Account
         public string GetEntries(Account a, DateTime s, DateTime e)
         {
             _entries = "Account: " + a.AccNumb.ToString() + "\n";
@@ -62,14 +68,35 @@ namespace bank_objects
             return _entries;
 
         }
+
+        //query transactions from an Account with LINQ
+        public string GetEntriesLINQ(Account a, DateTime s, DateTime e)
+        {
+            _entries = "Account: " + a.AccNumb.ToString() + "\n";
+            IEnumerable<Entry> dataQuery =
+                    from Entry in a.entry
+                    where Entry.timestamp > s && Entry.timestamp < e
+                    select Entry;
+
+            foreach (Entry aEntry in dataQuery)
+            {
+                _entries += "Time:" + aEntry.timestamp.ToString() + " Sum:" + aEntry.sum.ToString() + "\n";
+            }
+            _entries += "Balance: " + a.Balance.ToString();
+            return _entries;
+        }
+
+        //Get balance of given account
         public string GetBalance(Account a)
         {
             _entries = "Balance: " + a.Balance.ToString();
             return _entries;
         }
-        public void AddEntry(decimal sum, DateTime ts, Account a)
+
+        //Add Entry to an Account in the bank
+        public void AddEntry(Account a, decimal sum, DateTime ts)
         {
-            var entry = new Entry(sum, ts,a);
+            var entry = new Entry(a, sum, ts);
         }
     }
 }

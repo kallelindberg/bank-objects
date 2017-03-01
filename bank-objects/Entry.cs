@@ -10,8 +10,9 @@ namespace bank_objects
     {
         private decimal _sum; 
         private DateTime _timestamp;
-        
-        public Entry(decimal sum, DateTime ts, Account a)
+
+        //Create an Entry, with target Account, sum and a timestamp
+        public Entry(Account a, decimal sum, DateTime ts)
             {
             _sum = sum;
             _timestamp = ts;
@@ -21,12 +22,12 @@ namespace bank_objects
         public decimal sum
         {
             get { return _sum ; }
-            //set { _sum = value; }
+            
         }
         public DateTime timestamp
         {
             get { return _timestamp; }
-            //set { _timestamp = value; }
+           
         }
     }
 }

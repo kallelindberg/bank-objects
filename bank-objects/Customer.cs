@@ -33,6 +33,8 @@ namespace bank_objects
             get { return _accnumb; }
             set { _accnumb = value; }
         }
+
+        //Get account balance of the customer
         public string ToString(Bank b)
         {
             
