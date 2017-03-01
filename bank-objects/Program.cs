@@ -27,7 +27,7 @@ namespace bank_objects
             var acc2 = new Account(cst2, bank);
             var acc3 = new Account(cst3, bank);
 
-            //set initial balance fo the accounts
+            //set initial balance for the accounts
             for (int c=0; c < 3; c++) 
             {
                 var entry = new Entry(bank.accounts[c], 3000, DateTime.Now);
@@ -46,7 +46,7 @@ namespace bank_objects
             Console.WriteLine(cst3.ToString(bank));
 
             //query transactions from Account1
-            Console.WriteLine("\n" + bank.GetEntriesLINQ(acc2,DateTime.Now.AddDays(2), DateTime.Now.AddDays(8))); 
+            Console.WriteLine("\n" + bank.GetEntriesLINQ(acc1,DateTime.Now.AddDays(0), DateTime.Now.AddDays(8))); 
 
             Console.ReadKey();
         }

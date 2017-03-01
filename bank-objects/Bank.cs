@@ -15,14 +15,16 @@ namespace bank_objects
         private string _accnumb;
         private int[] numarray = new int[16];
 
-        public Bank(string name)
-        {
-            _name = name;
-        }
         public Bank()
         {
 
         }
+
+        public Bank(string name)
+        {
+            _name = name;
+        }
+
         public string Name
         {
             get { return _name; }
@@ -50,7 +52,7 @@ namespace bank_objects
             {
                 _entries +=  "Time:" + aEntry.timestamp.ToString()+ " Sum:" + aEntry.sum.ToString() +"\n";
             }
-            _entries += "Balance: " + a.Balance.ToString();
+            _entries += "\nBalance: " + a.Balance.ToString();
             return _entries;
            
         }
@@ -64,7 +66,7 @@ namespace bank_objects
                 if (aEntry.timestamp > s && aEntry.timestamp < e )
                 _entries += "Time:" + aEntry.timestamp.ToString() + " Sum:" + aEntry.sum.ToString() + "\n";
             }
-            _entries += "Balance: " + a.Balance.ToString();
+            _entries += "\nBalance: " + a.Balance.ToString();
             return _entries;
 
         }
@@ -73,16 +75,17 @@ namespace bank_objects
         public string GetEntriesLINQ(Account a, DateTime s, DateTime e)
         {
             _entries = "Account: " + a.AccNumb.ToString() + "\n";
+
             IEnumerable<Entry> dataQuery =
                     from Entry in a.entry
                     where Entry.timestamp > s && Entry.timestamp < e
                     select Entry;
-
             foreach (Entry aEntry in dataQuery)
             {
                 _entries += "Time:" + aEntry.timestamp.ToString() + " Sum:" + aEntry.sum.ToString() + "\n";
             }
-            _entries += "Balance: " + a.Balance.ToString();
+
+            _entries += "\nBalance: " + a.Balance.ToString();
             return _entries;
         }
 

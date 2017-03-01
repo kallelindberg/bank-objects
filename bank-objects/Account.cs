@@ -13,7 +13,7 @@ namespace bank_objects
         public string AccNumb { get; set; }
         public List<Entry> entry = new List<Entry>();
 
-        //call for the bank to create an account number for the given customer
+        //create an account number for the given customer
         public Account(Customer c, Bank b)
         {
             c.AccNumb = b.CreateAN(this);
@@ -40,6 +40,7 @@ namespace bank_objects
             {
                 _entries += "Time:" + aEntry.timestamp.ToString() + " Sum:" + aEntry.sum.ToString() + "\n";
             }
+            _entries += "\nBalance: " + this.Balance.ToString();
             return _entries;
 
         }
@@ -53,7 +54,7 @@ namespace bank_objects
                 if (aEntry.timestamp > s && aEntry.timestamp < e)
                     _entries += "Time:" + aEntry.timestamp.ToString() + " Sum:" + aEntry.sum.ToString() + "\n";
             }
-            _entries += "Balance: " + this.Balance.ToString();
+            _entries += "\nBalance: " + this.Balance.ToString();
             return _entries;
 
         }

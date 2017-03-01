@@ -39,7 +39,7 @@ namespace bank_objects
         {
             
             _balance = b.accounts.Find(x => x.AccNumb ==_accnumb).Balance;
-            return "Customer: " + Firstname + " " + Surname + ": " + _balance ;
+            return "Customer: " + Firstname + " " + Surname + "\n Account: " + _accnumb + " Balance: " + _balance ;
         }
     }
 }
